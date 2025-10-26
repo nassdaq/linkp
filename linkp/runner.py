@@ -11,8 +11,10 @@ from linkp.visual_generator import VisualGenerator
 from linkp.linkedin_poster import LinkedInPoster
 
 
-def run_daily_post():
+def run_daily_post(debug=False):
     """Run the daily LinkedIn post workflow."""
+    if debug:
+        print("Debug mode enabled for run_daily_post.")
     print("🚀 Starting LinkP daily post workflow...\n")
     
     # Load configuration
@@ -80,7 +82,8 @@ def run_daily_post():
         config.linkedin_client_id,
         config.linkedin_client_secret,
         config.linkedin_access_token,
-        person_urn=config.linkedin_person_urn
+        person_urn=config.linkedin_person_urn,
+        linkedin_version=config.linkedin_api_version
     )
     
     # Add hashtags
@@ -91,18 +94,18 @@ def run_daily_post():
         if image_path and image_path.exists():
             # Try to post with image first
             try:
-                poster.post_with_image(post_text, image_path)
+                poster.post_with_image(post_text, image_path, debug=debug)
                 print("✅ Posted to LinkedIn with visual!")
             except Exception as img_error:
                 # Fall back to text-only post if image upload fails
                 print(f"⚠️  Image upload failed ({img_error}), posting text only...")
                 try:
-                    poster.post_text_update(post_text)
+                    poster.post_text_update(post_text, debug=debug)
                     print("✅ Posted to LinkedIn (text only)!")
                 except Exception as text_error:
                     raise text_error
         else:
-            poster.post_text_update(post_text)
+            poster.post_text_update(post_text, debug=debug)
             print("✅ Posted to LinkedIn!")
     except Exception as e:
         print(f"❌ LinkedIn posting error: {e}")
