@@ -1,0 +1,3 @@
+[console_scripts]
+linkp = linkp.cli:main
+
