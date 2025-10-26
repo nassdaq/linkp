@@ -5,12 +5,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="linkp",
-    version="0.3.0",
-    author="LinkP Team",
+    version="1.0.2",
+    author="nassdaq",
     description="AI-powered tool for daily LinkedIn developer progress posts, with git tracking, AI summarization, and visual generation.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/linkp",
+    url="https://github.com/nassdaq/linkp",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -23,7 +23,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.9",
     install_requires=[
         "click>=8.0.0",
         "openai>=1.0.0",
