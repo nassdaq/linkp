@@ -29,6 +29,9 @@ PROJECT_PATH={cwd}
 
 # Optional: Set custom AI model (default is gpt-3.5-turbo)
 # OPENAI_MODEL=gpt-4
+
+# Optional: Set LinkedIn API version (default is 202503)
+# LINKEDIN_API_VERSION=202503
 """
         
         with open(env_file, 'w') as f:
